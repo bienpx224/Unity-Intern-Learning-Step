@@ -1,5 +1,6 @@
 # Unity-Intern-Learning-Roadmap: 
 
+## Learning Path : 
 - Cài đặt Unity, github.
 - Học về cấu trúc Unity Editor, Các tạo game object, components, script.
 - Lifecircle trong Unity : Cần nghiên cứu kĩ và nhớ về phần này. 
@@ -22,6 +23,15 @@
 
 - Setup dự án từ con số 0.
 
+## Một số bài tập : 
 
+1. Bài tập về Coroutine : 
+- Gameobject đổi màu sau khi ấn chọn màu, và sau 2 giây thì sẽ quay trở lại màu ban đầu. 
+- Khi enemy get hit, enemy object đổi thành màu đỏ, sau 1s thì quay trở lại màu ban đầu. 
+- Khi start scene, sau 2s thì game play mới bắt đầu, object mới có thể bắn đạn. 
+
+2. Bài tập về Input : 
+- Viết chương trình gameobject luôn quay nhìn về hướng chuột, khi click chuột thì bắn đạn về hướng con trỏ chuột.
+- Ấn nút Space để bắt đầu game : Start Playing. 
 
 
