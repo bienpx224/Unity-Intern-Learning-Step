@@ -19,12 +19,12 @@ public class ChangeColorWhenClickButton : MonoBehaviour
         button2Color = button2.image.color;
     }
 
-    public void BlueColor()
+    public void Button1Color()
     {
         ChangeColor(button1Color);
         StartCoroutine(ResetColorAfterDelay());
     }
-    public void YellowColor()
+    public void Button2Color()
     {
         ChangeColor(button2Color);
         StartCoroutine(ResetColorAfterDelay());
