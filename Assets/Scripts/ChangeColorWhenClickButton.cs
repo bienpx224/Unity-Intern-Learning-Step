@@ -5,30 +5,29 @@ using UnityEngine.UI;
 
 public class ChangeColorWhenClickButton : MonoBehaviour
 {
-    public Image image;
+    public SpriteRenderer squareSprite;
     public Color blue;
     public Color yellow;
-    private Color originalColor;
+    private Color originalSquareColor;
 
     void Start()
     {
-        originalColor = image.color;
+        originalSquareColor = squareSprite.color;
     }
 
     public void BlueColor()
     {
-        image.color = blue;
+        squareSprite.color = blue;
         StartCoroutine(ResetColorAfterDelay());
     }
     public void YellowColor()
     {
-        image.color = yellow;
+        squareSprite.color = yellow;
         StartCoroutine(ResetColorAfterDelay());
     }
     IEnumerator ResetColorAfterDelay()
     {
         yield return new WaitForSeconds(2f);
-
-        image.color = originalColor;
+        squareSprite.color = originalSquareColor;
     }
 }
