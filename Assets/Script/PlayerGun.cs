@@ -27,6 +27,6 @@ public class PlayerGun : MonoBehaviour
         Vector3 gunRotaion = targetPos - transform.parent.position;
         gunRotaion.Normalize();
         float rotationZ = Mathf.Atan2(gunRotaion.y, gunRotaion.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ+90);
     }
 }

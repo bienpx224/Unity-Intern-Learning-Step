@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     private void GetMousePositsion()
     {
-        mouseWorldPos = Input.mousePosition;
+        mouseWorldPos = Camera.main.ViewportToScreenPoint(Input.mousePosition);
         
     }
     private void GetMouseClick(){
