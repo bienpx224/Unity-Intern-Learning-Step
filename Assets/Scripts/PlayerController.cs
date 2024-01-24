@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bulletCount;
     private float bulletSpeed = 10;
     private int bulletCountIndex = 0;
+    private GameObject[] bulletClone;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         RotateFollowMouse();
         Shooting();
+        bulletClone = GameObject.FindGameObjectsWithTag("Bullet(Clone)");
+        bulletCountIndex = bulletClone.Length;
+        bulletCount.SetText(bulletCountIndex.ToString());
     }
 
     public void ChangeColor(Color color)
@@ -56,8 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-            bulletCountIndex = bulletCountIndex + 1;
-            bulletCount.SetText(bulletCountIndex.ToString());
+            // bulletCountIndex = bulletCountIndex + 1;
+            // bulletCount.SetText(bulletCountIndex.ToString());
         }
     }
 }
