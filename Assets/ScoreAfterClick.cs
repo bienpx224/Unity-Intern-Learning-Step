@@ -22,7 +22,7 @@ public class ScoreAfterClick : MonoBehaviour
         
         if(InputManager.Instance.isClick)
         {
-            count++;
+            count = Fire.Instance.count;
             score.text=count.ToString();
         }
 

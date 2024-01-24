@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float bulletSpeed = 10f;
-    [SerializeField] protected Vector3 directon = Vector3.down;
+    [SerializeField] protected Vector3 directon = Vector3.up;
     private void Update()
     {
         BulletFly();
