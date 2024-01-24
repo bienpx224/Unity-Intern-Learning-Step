@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] Vector3 targetPos;
-    [SerializeField] Transform Player;
+    [SerializeField] private Vector3 targetPos;
+    [SerializeField] private Transform player;
     void Start()
     {
-        if (Player == null)
-            Player = transform.Find("=== Player");
+        if (player == null)
+            player = transform.Find("=== Player");
     }
 
     // Update is called once per frame
@@ -30,3 +30,4 @@ public class PlayerGun : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ+90);
     }
 }
+
