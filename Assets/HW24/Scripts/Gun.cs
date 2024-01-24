@@ -22,14 +22,20 @@ public class Gun : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Time.time > nextFire)
-        {
-            count++;
-            nextFire = Time.time + fireRate;
-            Instantiate(Bullet, transform.position, transform.rotation);
-        }
-    }
 
-    // Update is called once per frame
+        if (InputManager.Instnace.isClick)
+        {
+            if (Time.time > nextFire)
+            {
+                count++;
+                nextFire = Time.time + fireRate;
+                Instantiate(Bullet, transform.position, transform.rotation);
+            }
+        }
+            
+    }
+            
+
+ 
    
 }
