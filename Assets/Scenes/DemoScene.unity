@@ -597,10 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3b69c9bee14954fbeaa9881df394f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   squareSprite: {fileID: 1436690442}
-  blue: {r: 0.058823533, g: 0.5803922, b: 0.9607844, a: 1}
-  yellow: {r: 0.9607844, g: 0.91372555, b: 0.058823533, a: 1}
+  button1: {fileID: 808204997}
+  button2: {fileID: 631346891}
 --- !u!1 &1165973914
 GameObject:
   m_ObjectHideFlags: 0
