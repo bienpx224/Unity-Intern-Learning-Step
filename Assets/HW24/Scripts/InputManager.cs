@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
     }
     protected virtual void OnClickMouse()
     {
-        isClick = Input.GetButtonDown("Fire1");
+        isClick = Input.GetButtonDown("Fire2");
     }
 }
 
