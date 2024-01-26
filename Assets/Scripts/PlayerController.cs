@@ -15,11 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private TextMeshProUGUI bulletCount;
     private float bulletSpeed = 10;
-    private int bulletCountIndex = 0;
+    private int bulletCountIndex = 5;
     private GameObject[] bulletClone;
     // Start is called before the first frame update
     void Start()
     {
+        bulletCount.SetText(bulletCountIndex.ToString());
         if (sprite == null)
         {
             sprite = GetComponent<SpriteRenderer>();
@@ -28,10 +29,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         RotateFollowMouse();
-        Shooting();
-        bulletClone = GameObject.FindGameObjectsWithTag("Bullet(Clone)");
-        bulletCountIndex = bulletClone.Length;
-        bulletCount.SetText(bulletCountIndex.ToString());
+        if(bulletCountIndex != 0)
+        {
+            Shooting();
+        }
+        else
+        {
+            StartCoroutine(IEReload());
+        }
     }
 
     public void ChangeColor(Color color)
@@ -60,8 +65,15 @@ public class PlayerController : MonoBehaviour
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-            // bulletCountIndex = bulletCountIndex + 1;
-            // bulletCount.SetText(bulletCountIndex.ToString());
+            bulletCountIndex -= 1;
+            bulletCount.SetText(bulletCountIndex.ToString());
         }
+    }
+    private IEnumerator IEReload()
+    {
+        yield return new WaitForSeconds(2f);
+        bulletCountIndex = 5;
+        bulletCount.SetText(bulletCountIndex.ToString());
+        Shooting();
     }
 }
