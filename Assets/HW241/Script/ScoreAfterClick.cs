@@ -13,18 +13,6 @@ public class ScoreAfterClick : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateScore();        
-    }
-    private void UpdateScore(){
-        
-        if(InputManager.Instance.isClick)
-        {
-            count = Fire.Instance.count;
-            score.text=count.ToString();
-        }
-
-    }
+  
+    
 }

@@ -7,24 +7,35 @@ public class Fire : MonoBehaviour
     [SerializeField] protected Transform bullet;
     private static Fire instance;
     public static Fire Instance {get => instance;}
-    public int count=0;
+    [SerializeField] private int bulletMagazine = 5;
+    private bool isOnReload = false;
     void Start()
     {
         instance=this;
     }
     void Update()
     {
-        isFire();
+        IsFire();
+        Reload();
     }
-
-    private void isFire()
+    private void Reload(){
+        if(bulletMagazine > 0) return;
+        StartCoroutine(Reloading());
+    }
+    private IEnumerator Reloading(){
+        isOnReload = true;
+        yield return new WaitForSeconds(2f);
+        bulletMagazine = 5;
+        isOnReload = false;
+    }
+    private void IsFire()
     {
-        if (InputManager.Instance.isClick)
+        if (InputManager.Instance.isClick && !isOnReload)
         {
             Vector3 spawnPos = transform.parent.position;
             Quaternion rotation = transform.parent.rotation;
             Instantiate(this.bullet, spawnPos, rotation);
-            count++;
+            bulletMagazine--;
         }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -8,7 +7,7 @@ public class InputManager : MonoBehaviour
     private static InputManager instance;
     public static InputManager Instance { get => instance; }
     public Vector3 mouseWorldPos;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cam;
     public bool isClick=false;
 
     private void Start()
@@ -23,7 +22,7 @@ public class InputManager : MonoBehaviour
 
     protected virtual void GetMousePositsion()
     {
-        mouseWorldPos= camera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos= cam.ScreenToWorldPoint(Input.mousePosition);
     }
     private void GetMouseClick(){
         isClick = Input.GetButtonDown("Fire1");
