@@ -1,20 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Charater : MonoBehaviour
 {
-    [SerializeField] int healPoint = 5;
-    [SerializeField] int damage = 1;
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] protected int healPoint = 5;
+    [SerializeField] protected int damage = 1;
+    [SerializeField] protected float moveSpeed = 5f;
 
-    public virtual void CharacterMovement(int moveSpeed, Transform target){
-        transform.Translate(target.position*moveSpeed*Time.deltaTime);
+    protected virtual void CharacterMovement(float moveSpeed, Transform target)
+    {
+        if (target != null)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
     }
-    public virtual void TakingDamage(){
-        
+    protected virtual void TakingDamage()
+    {
+
     }
-    public virtual void Firing(){
+    protected virtual void Firing()
+    {
 
     }
 }

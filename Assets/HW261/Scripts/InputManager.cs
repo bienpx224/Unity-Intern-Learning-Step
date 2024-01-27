@@ -27,4 +27,11 @@ public class InputManager : MonoBehaviour
     private void GetMouseClick(){
         isClick = Input.GetButtonDown("Fire1");
     }
+    public Transform LookAtTarget(Transform rotationToLookAtTarget){
+        Vector3 distance = (rotationToLookAtTarget.position - transform.position);
+        distance.Normalize();
+        float rotateZ = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
+        rotationToLookAtTarget.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ - 90);
+        return rotationToLookAtTarget;
+    }
 }
