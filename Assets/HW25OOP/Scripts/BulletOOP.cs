@@ -19,4 +19,11 @@ public class BulletOOP : MonoBehaviour
     {
         transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -9,7 +9,10 @@ public class InputOOP : MonoBehaviour
 
     [SerializeField] protected Vector3 mouseWorldPosOOP;
 
+    public bool isClick = false;
     public Vector3 MouseWorldPosOOP { get => mouseWorldPosOOP; }
+
+    
 
     private void Awake()
     {
@@ -18,10 +21,15 @@ public class InputOOP : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.GetMousePosOOP();   
+        this.GetMousePosOOP();
+        this.FiringButton();
     }
     protected virtual void GetMousePosOOP()
     {
         this.mouseWorldPosOOP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+    protected void FiringButton()
+    {
+        isClick = Input.GetButton("Fire1");
     }
 }

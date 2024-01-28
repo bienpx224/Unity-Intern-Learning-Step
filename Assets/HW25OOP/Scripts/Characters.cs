@@ -13,22 +13,15 @@ public abstract class Characters : MonoBehaviour
     {
 
     }
-    public virtual void SetData(Characters c)
-    {
-        hp = c.hp;
-        atk = c.atk;
-        atkSpd= c.atkSpd;
-        moveSpeed = c.moveSpeed;
-    }
-    public virtual void Onfire()
+    protected virtual void Onfire()
     {
 
     }
-    public virtual void TakeDamage()
+    protected virtual void TakeDamage()
     {
 
     }
-    public virtual void Movement()
+    protected virtual void Movement()
     {
 
     }  
