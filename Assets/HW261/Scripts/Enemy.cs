@@ -7,21 +7,30 @@ using UnityEngine.TextCore.Text;
 
 public class Enemy : Charater
 {
-    [SerializeField] Transform playerPos;
+    private static Enemy instance;
+    public static Enemy Instance { get => instance; }
+    [SerializeField] public float spawnTime = 5f;
+    [SerializeField] GameObject playerPos;
     [SerializeField] TextMeshProUGUI healPointText;
-    private void OnEnable(){
+    private void Awake()
+    {
+        instance = this;
+    }
+    private void OnEnable()
+    {
+        playerPos= GameObject.FindGameObjectWithTag("Player");
         healPointText.text = "HP: " + healPoint.ToString();
     }
     private void Update()
     {
-        CharacterMovement(moveSpeed, playerPos);
+        CharacterMovement(moveSpeed, playerPos.transform);
 
     }
     protected override void TakingDamage()
     {
         base.TakingDamage();
         healPoint--;
-        healPointText.text = "HP: " +  healPoint.ToString();
+        healPointText.text = "HP: " + healPoint.ToString();
         if (healPoint <= 0)
         {
             Destroy(gameObject);
