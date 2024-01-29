@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed = 0.5f;
     [SerializeField] private TextMeshPro enemyHP;
     private Rigidbody2D rb;
     private int hp = 100;
