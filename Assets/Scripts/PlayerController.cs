@@ -14,9 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private TextMeshProUGUI bulletCount;
-    private float bulletSpeed = 10;
     private int bulletCountIndex = 5;
-    private GameObject[] bulletClone;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +27,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         RotateFollowMouse();
-        if(bulletCountIndex != 0)
+        if (Input.GetMouseButtonDown(0))
         {
             Shooting();
-        }
-        else
-        {
-            StartCoroutine(IEReload());
         }
     }
 
@@ -61,19 +55,39 @@ public class PlayerController : MonoBehaviour
     }
     void Shooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (bulletCountIndex > 0)
         {
-            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bulletCountIndex -= 1;
             bulletCount.SetText(bulletCountIndex.ToString());
+
+            if (bulletCountIndex <= 0)
+            {
+                Debug.Log("Out of bullet");
+                Invoke("Reload", 2);
+            }
         }
     }
-    private IEnumerator IEReload()
+    private void Reload()
     {
-        yield return new WaitForSeconds(2f);
+        Debug.Log("Reload called");
         bulletCountIndex = 5;
         bulletCount.SetText(bulletCountIndex.ToString());
-        Shooting();
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("Game Destroyed");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable");
     }
 }

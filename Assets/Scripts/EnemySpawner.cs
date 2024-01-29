@@ -6,30 +6,24 @@ using UnityEngine.UIElements;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float minSpawnTime;
-    [SerializeField] private float maxSpawnTime;
-    [SerializeField] private Transform target;
-    private float spawnTime;
-    private float moveSpeed = 0.1f;
-    private void Awake()
+    [SerializeField] private float spawnRate = 1.0f;
+    [SerializeField] private GameObject[] enemyPrefabs;
+    private bool canSpawn = true;
+
+    private void Start()
     {
-        SetTimeUntilSpawn();
+        StartCoroutine(Spawner());
     }
-    private void Update()
+    private IEnumerator Spawner()
     {
-        spawnTime -= Time.deltaTime;
-        if(spawnTime <= 0)
+        WaitForSeconds wait = new WaitForSeconds(spawnRate);
+        while (canSpawn)
         {
-            var newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            Rigidbody2D enemyRb = new Rigidbody2D();
-            SetTimeUntilSpawn();
+            yield return wait;
+            int rand = Random.Range(0, enemyPrefabs.Length);
+            GameObject enemyToSpawn = enemyPrefabs[rand];
+
+            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
         }
-        transform.LookAt(target);
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
-    }
-    void SetTimeUntilSpawn()
-    {
-        spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 }
