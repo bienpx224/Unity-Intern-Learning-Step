@@ -74,10 +74,6 @@ public class PlayerController : MonoBehaviour
         bulletCountIndex = 5;
         bulletCount.SetText(bulletCountIndex.ToString());
     }
-    private void OnDestroy()
-    {
-        Debug.Log("Game Destroyed");
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
@@ -85,9 +81,5 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-    }
-    private void OnDisable()
-    {
-        Debug.Log("OnDisable");
     }
 }

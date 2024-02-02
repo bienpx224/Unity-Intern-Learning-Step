@@ -10,6 +10,13 @@ public class Character : MonoBehaviour
     public float bulletSpeed = 10f;
 
     void Fire() { }
-    void TakeDamage() { }
+    void TakeDamage()
+    {
+        hp -= atk;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     void Movement() { }
 }
