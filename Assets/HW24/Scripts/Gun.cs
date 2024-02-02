@@ -25,12 +25,8 @@ public class Gun : MonoBehaviour
 
         if (InputManager.Instnace.isClick)
         {
-            if (Time.time > nextFire)
-            {
                 count++;
-                nextFire = Time.time + fireRate;
                 Instantiate(Bullet, transform.position, transform.rotation);
-            }
         }
             
     }
