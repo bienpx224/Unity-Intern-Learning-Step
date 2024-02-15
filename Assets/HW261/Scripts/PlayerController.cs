@@ -55,7 +55,7 @@ public class PlayerController : Charater
     protected override void TakingDamage()
     {
         healPoint--;
-        if (healPoint == 0)
+        if (healPoint >= 0)
         {
             Destroy(this.gameObject);
         }
