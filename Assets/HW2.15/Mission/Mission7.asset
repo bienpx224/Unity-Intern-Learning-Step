@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e1f555a2ebff14ca2e47173361481b, type: 3}
+  m_Name: Mission7
+  m_EditorClassIdentifier: 
+  missionName: Play 3 matchs
+  missionExp: 50
+  missionStatus: 
+  progressBarValue: 0.67
+  rewardIcon: {fileID: 21300000, guid: 7b6827dc950bb48278ef822641f23849, type: 3}
+  rewardQuanity: 20
+  claimButotnText: Go
+  claimButotnBackGround: {fileID: 21300000, guid: 6bbcba4e267be464998897741b81d508, type: 3}
+  fillAreaColor: {fileID: 21300000, guid: 15cd82f15e04f4f3f887bec521790fc8, type: 3}
+  missionBackground: {fileID: 0}
