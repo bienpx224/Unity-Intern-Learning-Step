@@ -11,7 +11,6 @@ public class UIController : MonoBehaviour
     public Transform missionDisplay;
     public MissonList missionList;
     public int numberOfMissionToShow = 5;
-    public int selectedIndex = -1;
     List<MissionDisplay> spawnedMission = new List<MissionDisplay>();
     public TextMeshProUGUI textUI;
     public TextMeshProUGUI missionName;
@@ -80,6 +79,6 @@ public class UIController : MonoBehaviour
     }*/
     public void OnClickText()
     {
-        
+         
     }
 }

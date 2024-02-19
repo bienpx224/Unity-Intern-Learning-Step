@@ -949,6 +949,7 @@ MonoBehaviour:
   claimButtonBackGround: {fileID: 2469285165089121969}
   missionBackground: {fileID: 7409914264340426259}
   missionBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  uiController: {fileID: 0}
 --- !u!114 &6663950964121415047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,10 +994,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6112939740183400291, guid: 381c2259b1edebe48b96ccfe92754d68, type: 3}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OnClickText
-        m_Mode: 3
+      - m_Target: {fileID: 4045284309377462374}
+        m_TargetAssemblyTypeName: MissionDisplay, Assembly-CSharp
+        m_MethodName: SetMissionTitle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

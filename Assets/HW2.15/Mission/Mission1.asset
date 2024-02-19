@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mission1
   m_EditorClassIdentifier: 
   missionName: Log in one time today
-  missionExp: 30
+  missionExp: 60
   missionStatus: Mission Completed
   progressBarValue: 1
   rewardIcon: {fileID: 21300000, guid: 811a3186c5bc84d70ad022e268531d91, type: 3}
@@ -22,4 +22,4 @@ MonoBehaviour:
   claimButotnBackGround: {fileID: 21300000, guid: 6bbcba4e267be464998897741b81d508, type: 3}
   fillAreaColor: {fileID: 21300000, guid: 28554fc966eb749e587c11db562e7eeb, type: 3}
   missionBackground: {fileID: 21300000, guid: bdb8005f1d63e49d9bd6df7ee646c0fb, type: 3}
-  missionBackGroundColor: {r: 0.87169814, g: 0.6735236, b: 0.21545745, a: 0.8901961}
+  index: 0

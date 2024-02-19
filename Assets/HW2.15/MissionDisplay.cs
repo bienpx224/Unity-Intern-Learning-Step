@@ -18,7 +18,7 @@ public class MissionDisplay : MonoBehaviour
     public Image claimButtonBackGround;
     public Image missionBackground;
     public Color missionBackgroundColor;
-   
+    public UIController uiController;
     public void SetMissionInfor(MissionGroup mission)
     {
         missionExp.text = mission.missionExp.ToString();
@@ -32,5 +32,9 @@ public class MissionDisplay : MonoBehaviour
         claimButtonBackGround.sprite = mission.claimButotnBackGround;
         missionBackground.sprite = mission.missionBackground;
     }
-
+    public void SetMissionTitle()
+    {
+        uiController = GetComponentInParent<UIController>();
+        uiController.textUI.text = missionTitle.text;
+    }
 }
