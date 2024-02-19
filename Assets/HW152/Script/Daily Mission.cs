@@ -46,4 +46,8 @@ public class DailyMission : ScriptableObject
             isDone = true;
         }
     }
+    public void ResetProgress(){
+        missionProgress = 0;
+        isDone = false;
+    }
 }

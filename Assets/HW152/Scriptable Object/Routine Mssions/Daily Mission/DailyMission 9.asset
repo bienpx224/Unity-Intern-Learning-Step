@@ -24,5 +24,5 @@ MonoBehaviour:
   isCreatingMission: 0
   isKillingMission: 0
   missionGoal: 3
-  missionProgress: 1
-  isDone: 0
+  missionProgress: 3
+  isDone: 1

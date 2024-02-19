@@ -11,9 +11,11 @@ public class MissionListController : MonoBehaviour
     [SerializeField] private MissionController dailyMissionConTroller;
     List<DailyMission> dailyMissionsLists;
     public void Start(){
+        if(dailyMissions.Count > 0) return;
         SetMissionList();
         for (int i = 0 ; i < numberOfMissions ; i++){
-            SetMissionRandom();
+            //SetMissionRandom();
+            SetMission(i);
         }
     }
     public void SetMissionList(){
@@ -25,6 +27,13 @@ public class MissionListController : MonoBehaviour
         int randomNumber = Random.Range(0, dailyMissionsLists.Count-1);
         dailyMissionConTroller.dailyMission = dailyMissionsLists[randomNumber];
         dailyMissionsLists.RemoveAt(randomNumber);
+        Transform instantiate = Instantiate(missionPrefab,transform);
+        dailyMissions.Add(instantiate);
+    }
+    public void SetMission(int index){
+        if(dailyMissionsLists.Count <= 0) return; 
+        dailyMissionConTroller = missionPrefab.GetComponentInChildren<MissionController>();
+        dailyMissionConTroller.dailyMission = dailyMissionsLists[index];
         Transform instantiate = Instantiate(missionPrefab,transform);
         dailyMissions.Add(instantiate);
     }
