@@ -16,4 +16,5 @@ public class MissionGroup : ScriptableObject
     [SerializeField] public Sprite claimButotnBackGround;
     [SerializeField] public Sprite fillAreaColor;
     [SerializeField] public Sprite missionBackground;
+    [SerializeField] public int index;
 }

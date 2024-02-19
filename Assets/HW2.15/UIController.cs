@@ -1,31 +1,58 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
+
 public class UIController : MonoBehaviour
 {
     public GameObject missionCard;
     public Transform missionDisplay;
     public MissonList missionList;
     public int numberOfMissionToShow = 5;
+    public int selectedIndex = -1;
+    List<MissionDisplay> spawnedMission = new List<MissionDisplay>();
+    public TextMeshProUGUI textUI;
+    public TextMeshProUGUI missionName;
     void Start()
     {
-        List<MissionGroup> randomMissionGroups = ChooseRandomMission();
-        DisplayMIsisonUI(randomMissionGroups);
-       // CreateMissionUI();
-    }
-
-   /* public void CreateMissionUI()
-    {
-        foreach(MissionGroup missionData in missionList.missions)
+        //List<MissionGroup> randomMissionGroups = ChooseRandomMission();
+        //DisplayMIsisonUI(randomMissionGroups);
+        for (int i = 0; i < missionList.missions.Count; i++)
         {
-          GameObject missionUI =  Instantiate(missionCard,missionDisplay);
-          MissionDisplay missionUIComponent = missionUI.GetComponent<MissionDisplay>();
-           missionUIComponent.SetMissionInfor(missionData);
-        }
-    }*/
+            // Lấy dữ liệu từ phần tử thứ i trong danh sách missionList
+            MissionGroup missionGroup = missionList.missions[i];
 
-    List<MissionGroup> ChooseRandomMission()
+            // Thiết lập index cho phần tử
+            missionGroup.index = i;
+        }
+    }
+    private void OnEnable()
+    {
+        ClearSpwanedData();
+        CreateMissionUI();
+    }
+    public void CreateMissionUI()
+    {
+        foreach (MissionGroup missionData in missionList.missions)
+        {
+            GameObject missionUI = Instantiate(missionCard, missionDisplay);
+            MissionDisplay missionUIComponent = missionUI.GetComponent<MissionDisplay>();
+            missionUIComponent.SetMissionInfor(missionData);
+            spawnedMission.Add(missionUIComponent);
+        }
+    }
+    public void ClearSpwanedData()
+    {
+
+        foreach (MissionDisplay misssionData in spawnedMission)
+        {
+            Destroy(misssionData.gameObject);
+        }
+        spawnedMission.Clear();
+    }
+    /*List<MissionGroup> ChooseRandomMission()
     {
         List<MissionGroup> originalMission = new List<MissionGroup>(missionList.missions);
         List<MissionGroup> randomMissions = new List<MissionGroup>();
@@ -50,5 +77,9 @@ public class UIController : MonoBehaviour
             MissionDisplay missionUIComponent = missionUI.GetComponent<MissionDisplay>();
             missionUIComponent.SetMissionInfor(mission);
         }
+    }*/
+    public void OnClickText()
+    {
+        
     }
 }
