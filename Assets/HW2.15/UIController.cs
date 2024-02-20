@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +13,10 @@ public class UIController : MonoBehaviour
     List<MissionDisplay> spawnedMission = new List<MissionDisplay>();
     public TextMeshProUGUI textUI;
     public TextMeshProUGUI missionName;
+    public Slider milestoneProgressBar;
+    public TextMeshProUGUI milestonePoints;
+    //public Sprite backgroundItem;
+    //public Image item1BG;
     void Start()
     {
         //List<MissionGroup> randomMissionGroups = ChooseRandomMission();
@@ -26,11 +29,16 @@ public class UIController : MonoBehaviour
             // Thiết lập index cho phần tử
             missionGroup.index = i;
         }
-    }
+    } 
     private void OnEnable()
     {
         ClearSpwanedData();
         CreateMissionUI();
+    }
+    private void Update()
+    {
+        UpdatePrgressBar();
+      //  ChangingBackGroundItem();
     }
     public void CreateMissionUI()
     {
@@ -77,8 +85,15 @@ public class UIController : MonoBehaviour
             missionUIComponent.SetMissionInfor(mission);
         }
     }*/
-    public void OnClickText()
+    public void UpdatePrgressBar()
     {
-         
+        milestonePoints.text = Mathf.RoundToInt(milestoneProgressBar.value).ToString();
     }
+   /* public void ChangingBackGroundItem()
+    {
+        if (Mathf.RoundToInt(milestoneProgressBar.value) >= 20)
+        {
+            item1BG.sprite = backgroundItem;
+        }
+    }*/
 }
